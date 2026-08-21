@@ -379,6 +379,7 @@
       <div class="portal-desc">Full payment via Stripe, based on the service and track count selected above. Complete this first — work begins once payment is received.</div>
       <div class="portal-total" id="portalTotal">€30 <span>total</span></div>
       <a class="btn-outline" id="payBtn" href="https://buy.stripe.com/28E4gy4eb8q44C8cHFfAc08" target="_blank" rel="noopener">Pay via Stripe →</a>
+      <div class="portal-desc" style="margin-top:-4px;">On the Stripe page, set quantity to <strong id="portalTracksReminder" style="color:var(--gold);">1</strong> to match this total.</div>
     </div>
 
     <div class="terms-row">
@@ -492,6 +493,7 @@
     const tracks = parseInt(document.getElementById('tracks').value, 10);
     const total = PRICES[service] * tracks;
     document.getElementById('portalTotal').innerHTML = `€${total} <span>total — ${service}, ${tracks} track${tracks > 1 ? 's' : ''}</span>`;
+    document.getElementById('portalTracksReminder').textContent = tracks;
     document.getElementById('payBtn').href = STRIPE_LINKS[service];
   }
   document.getElementById('service').addEventListener('change', updatePortal);
